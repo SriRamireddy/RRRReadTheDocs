@@ -11,7 +11,6 @@ Welcome to kotlin-Docu's documentation!
    :caption: Contents:
    
    Document 1
-   Document 2
 
 
 
