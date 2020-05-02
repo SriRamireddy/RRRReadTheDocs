@@ -9,6 +9,9 @@ Welcome to kotlin-Docu's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   Document 1
+   Document 2
 
 
 
