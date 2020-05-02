@@ -1,3 +1,7 @@
+=========
+Head
+=========
+
 - pip install sphinx
 - Create a directory inside your project to hold your docs:
 ::
