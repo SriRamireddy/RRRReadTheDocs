@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Kotlin-Documentation'
-copyright = u'2020, pavan'
-author = u'pavan'
+copyright = u'2020, RRR'
+author = u'Ramireddt'
 
 # The short X.Y version
 version = u''
