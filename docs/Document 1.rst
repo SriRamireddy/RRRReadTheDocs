@@ -1,14 +1,13 @@
 ==================
-This is Sample Doc
+Corotines
 ==================
+==================
+What is Coroutines
+==================
+A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines were added to Kotlin in version 1.3 and are based on established concepts from other languages.
 
-- cd docs
-- sphinx-quickstart
+On Android, coroutines help to solve two primary problems:
 
-::
-
-  make html
-  Your index.rst has been built into index.html in your documentation output directory (typically _build/html/index.html). Open this file  
-
-.. figure::  corotines.gif
-   :align:   center
+Manage long-running tasks that might otherwise block the main thread and cause your app to freeze.
+Providing main-safety, or safely calling network or disk operations from the main thread.
+This topic describes how you can use Kotlin coroutines to address these problems, enabling you to write cleaner and more concise app code. ::
