@@ -12,3 +12,9 @@ On Android, coroutines help to solve two primary problems:
 2. Providing main-safety, or safely calling network or disk operations from the main thread.
 
 This topic describes how you can use Kotlin coroutines to address these problems, enabling you to write cleaner and more concise app code.
+
+
+.. figure::  corotines.gif
+   :align:   center
+
+   Suspend method work flow.
