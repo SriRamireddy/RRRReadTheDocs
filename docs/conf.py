@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Kotlin-Documentation'
+project = u'Kotlin-Documentation On Coroutines'
 copyright = u'2020, RRR'
 author = u'Ramireddt'
 
@@ -128,7 +128,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Kotlin-Documentation.tex', u'Kotlin-Documentation Documentation',
-     u'pavan', 'manual'),
+     u'Ramireddy', 'manual'),
 ]
 
 
