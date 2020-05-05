@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Kotlin-Documentation On Coroutines'
+project = u'Kotlin-Documentation Coroutines'
 copyright = u'2020, RRR'
 author = u'Ramireddt'
 
