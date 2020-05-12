@@ -21,20 +21,85 @@ On Android, it's essential to avoid blocking the main thread. The main thread is
 
 For your app to display to the user without any visible pauses, the main thread has to update the screen every 16ms or more, which is about 60 frames per second. Many common tasks take longer than this, such as parsing large JSON datasets, writing data to a database, or fetching data from the network. Therefore, calling code like this from the main thread can cause the app to pause, stutter, or even freeze. And if you block the main thread for too long, the app may even crash and present an Application Not Responding dialog.
 
-================
+
 Add Dependancy
-================
+##############
+In build.gradle(Module:app) -> dependency block
 :: 
 
-   In build.gradle(Module:app) -> dependency block
+ 
    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5'
+   
+Before onCreate initialize mutableList objects and API
+######################################################
+::
+   
+    val countryNameList : MutableList<String> = mutableListOf()
+    var countryFlag : MutableList<String> = mutableListOf()
 
-=================
+    val url : String = "https://corona.lmao.ninja/v2/countries"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+    
+    //statements
+    
+    }
+
+suspend function Syntax
+################
+::
+
+   suspend fun getData()
+   {
+      // Get data from server 
+   }
+
 Suspend work flow
-=================
+#################
 
 .. figure::  corotines.gif
    :align:   center
 
-   Suspend method work flow.
+   Suspend function work flow.
+   
+Write Code for getting data by using Coroutines
+###############################################
+In User defined fun we call suspend function by using coroutineScope for getting data from internet
+::
+
+   fun callCoroutines(){
+        CoroutineScope(Dispatchers.IO).launch {
+            getCountryWiseData()
+        }
+Understanding CoroutineScope
+############################
+In Kotlin, all coroutines run inside a CoroutineScope. A scope controls the lifetime of coroutines through its job. When you cancel the job of a scope, it cancels all coroutines started in that scope. On Android, you can use a scope to cancel all running coroutines when, for example, the user navigates away from an Activity or Fragment. Scopes also allow you to specify a default dispatcher. A dispatcher controls which thread runs a coroutine.
+
+For coroutines started by the UI, it is typically correct to start them on Dispatchers.Main which is the main thread on Android. A coroutine started on Dispatchers.Main won't block the main thread while suspended. Since a ViewModel coroutine almost always updates the UI on the main thread, starting coroutines on the main thread saves you extra thread switches. A coroutine started on the Main thread can switch dispatchers any time after it's started. For example, it can use another dispatcher to parse a large JSON result off the main thread.
+
+Connect to Http
+###############
+
+::
+
+   suspend fun getCountryWiseData() 
+   {
+     val url = URL(url)
+     val httpsURLConnection : HttpsURLConnection = url.openConnection() as HttpsURLConnection
+     val inputStream : InputStream = httpsURLConnection.inputStream
+     val text = inputStream.bufferedReader().use(BufferedReader::readText)
+     withContext(Dispatchers.Main)
+     {
+           val root  = JSONArray(text)
+           for( i in 0..root.length()-1)
+           {
+              val po = root.getJSONObject(i)
+              val countryName = po.getString("country").toString()
+              val flagUrl = forFlag.getString("flag").toString()
+              countryNameList.add(countryName)
+              countryFlag.add(flagUrl)      
+           }
+        }
+    }
+       
