@@ -113,6 +113,14 @@ Connect to Http
 Creating the RecyclerView
 =========================
 
+Add Recyclerview and Picasso Dependency
+##############
+In build.gradle(Module:app) -> dependency block
+:: 
+
+   implementation 'androidx.recyclerview:recyclerview:1.1.0'
+   implementation 'com.squareup.picasso:picasso:2.71828'//for loading image from url
+
 To create the RecyclerView, break the work into four parts:
 
 Declare the RecyclerView in an activity layout and reference it in the activity Kotlin file.
