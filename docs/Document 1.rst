@@ -22,7 +22,7 @@ On Android, it's essential to avoid blocking the main thread. The main thread is
 For your app to display to the user without any visible pauses, the main thread has to update the screen every 16ms or more, which is about 60 frames per second. Many common tasks take longer than this, such as parsing large JSON datasets, writing data to a database, or fetching data from the network. Therefore, calling code like this from the main thread can cause the app to pause, stutter, or even freeze. And if you block the main thread for too long, the app may even crash and present an Application Not Responding dialog.
 
 
-Add Dependancy
+Add Dependency
 ##############
 In build.gradle(Module:app) -> dependency block
 :: 
