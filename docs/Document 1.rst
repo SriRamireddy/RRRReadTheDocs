@@ -108,4 +108,80 @@ Connect to Http
            }
         }
     }
-       
+      
+=========================
+Creating the RecyclerView
+=========================
+
+To create the RecyclerView, break the work into four parts:
+
+Declare the RecyclerView in an activity layout and reference it in the activity Kotlin file.
+Create a custom item XML layout for RecyclerView for its items.
+Create the view holder for view items, connect the data source of the RecyclerView and handle the view logic by creating a RecyclerView Adapter.
+Attach the adapter to the RecyclerView.
+Step one should be familiar. Open up the activity_main.xml layout file and add the following as a child of the LinearLayout:
+
+::
+
+   <android.support.v7.widget.RecyclerView
+   android:id="@+id/recyclerView"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"/>
+
+Open MainActivity.kt and declare the following property at the top of the class:
+
+::
+
+  private lateinit var linearLayoutManager: LinearLayoutManager
+
+In onCreate(), add the following lines after setContentView:
+
+::
+  
+  linearLayoutManager = LinearLayoutManager(this)
+  recyclerView.layoutManager = linearLayoutManager
+
+Create **row.xml** file for design with LinearLayout horizantal orientation
+
+Add the following XML elements **row** XML file:
+
+::
+
+     <ImageView
+      android:id="@+id/country_flag"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="2"
+      />
+
+    <TextView
+     android:id="@+id/country_name"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_weight="8"
+     />
+     
+=========================
+Adapters for RecyclerView
+=========================
+
+Right-click on the first package, select **New ‣ Kotlin File ‣ Class**, name it **RecyclerAdapter** and select Class for Kind.
+
+Make the class extend RecyclerView.Adapter as in the following:
+
+::
+
+  class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.PhotoHolder>()  {
+  }
+
+Android Studio will prompt you to import the RecyclerView class. Click on RecylerView and press **Alt-Enter** on a PC and choose **Import**. Since you’re extending a class that has required methods, Android Studio will underline your class declaration with a red squiggle.
+
+
+.. figure::  https://koenig-media.raywenderlich.com/uploads/2019/02/implement_members-650x259.png
+   :align:   center
+
+Select all three methods and press OK to implement the suggested methods:
+
+.. figure::  https://koenig-media.raywenderlich.com/uploads/2019/02/implement_members_dialog-413x500.png
+   :align:   center
+   
