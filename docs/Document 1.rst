@@ -193,3 +193,6 @@ Select all three methods and press OK to implement the suggested methods:
 .. figure::  https://koenig-media.raywenderlich.com/uploads/2019/02/implement_members_dialog-413x500.png
    :align:   center
    
+.. figure::  
+   :align:   center
+   
