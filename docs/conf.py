@@ -21,7 +21,7 @@
 
 project = u'Kotlin-Documentation Coroutines'
 copyright = u'2020, RRR'
-author = u'Ramireddt'
+author = u'Ramireddy'
 
 # The short X.Y version
 version = u''
